@@ -118,18 +118,18 @@ class _BottomBarState extends State<BottomBar> {
           ),
           label: 'Search',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.rss_feed,
-          ),
-          label: 'RSS',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-          ),
-          label: 'Account',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.rss_feed,
+        //   ),
+        //   label: 'RSS',
+        // ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.person,
+        //   ),
+        //   label: 'Account',
+        // ),
       ],
     );
   }
