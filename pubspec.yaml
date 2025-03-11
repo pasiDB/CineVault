@@ -33,6 +33,7 @@ dependencies:
   path_provider: ^2.0.15
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -94,3 +95,10 @@ flutter:
     - family: Nothing
       fonts:
         - asset: assets/fonts/nothing.ttf
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/app_icon.png"
