@@ -129,7 +129,7 @@ class ConnectivityWidget extends StatelessWidget {
                 'No internet connection detected.\n Please check your connection.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.orange,
+                    color: Colors.redAccent,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
