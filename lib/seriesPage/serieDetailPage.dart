@@ -21,6 +21,7 @@ import 'package:Mirarr/widgets/bottom_bar.dart';
 import 'package:Mirarr/widgets/custom_divider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SerieDetailPage extends StatefulWidget {
   final String serieName;
@@ -172,6 +173,36 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
       }
     } catch (e) {
       throw Exception('Failed to load external Id');
+    }
+  }
+
+  Future<void> _launchTrailer(String seriesTitle) async {
+    final query = Uri.encodeComponent('$seriesTitle trailer');
+    final url = 'https://www.youtube.com/results?search_query=$query';
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchDetails(String seriesTitle) async {
+    final query = Uri.encodeComponent('$seriesTitle details');
+    final url = 'https://www.google.com/search?q=$query';
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
@@ -821,18 +852,17 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                       children: [
                         Center(
                             child: SizedBox(
-                          width: double.maxFinite,
-                          child: FloatingActionButton(
-                            backgroundColor:
-                                getSeriesColor(context, widget.serieId),
-                            onPressed: () => seasonsAndEpisodes(context,
-                                widget.serieId, widget.serieName, imdbId!),
-                            child: Text(
-                              'Details',
-                              style: getSeriesButtonTextStyle(widget.serieId),
-                            ),
-                          ),
-                        ))
+                                width: double.maxFinite,
+                                child: FloatingActionButton(
+                                  backgroundColor:
+                                      getSeriesColor(context, widget.serieId),
+                                  onPressed: () => _launchTrailer(widget.serieName),
+                                  child: Text(
+                                    'Watch Trailer',
+                                    style:
+                                        getSeriesButtonTextStyle(widget.serieId),
+                                  ),
+                                )))
                       ],
                     ),
                   ),
