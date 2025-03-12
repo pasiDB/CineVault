@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -8,6 +18,12 @@ allprojects {
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
+    // Remove the android block
+    // if (project.name == 'webview_flutter_android') {
+    //     project.android {
+    //         namespace 'com.example.webview_flutter_android'
+    //     }
+    // }
 }
 subprojects {
     project.evaluationDependsOn(':app')

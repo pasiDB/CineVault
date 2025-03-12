@@ -28,6 +28,7 @@ import 'package:Mirarr/widgets/image_gallery_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String movieTitle;
@@ -188,6 +189,21 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       }
     } catch (e) {
       throw Exception('Failed to load movie details');
+    }
+  }
+
+  Future<void> _launchTrailer(String movieTitle) async {
+    final query = Uri.encodeComponent('$movieTitle trailer');
+    final url = 'https://www.youtube.com/results?search_query=$query';
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
@@ -842,63 +858,14 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
-                          child: FutureBuilder(
-                              future: checkAvailability(widget.movieId, region),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  // Display loading indicator while fetching data
-                                  return const SizedBox();
-                                } else if (snapshot.hasError) {
-                                  // Display error message if fetching data fails
-                                  return const Text('Error loading data');
-                                } else {
-                                  // Display check mark if results are not empty
-                                  return snapshot.data == true
-                                      ? SizedBox(
-                                          width: double.maxFinite,
-                                          child: FloatingActionButton(
-                                            backgroundColor: getMovieColor(
-                                                context, widget.movieId),
-                                            onPressed: () => showWatchOptions(
-                                                context,
-                                                widget.movieId,
-                                                widget.movieTitle,
-                                                releaseDate ?? '',
-                                                imdbId ?? ''),
-                                            child: Text(
-                                              'Watch',
-                                              style: getMovieButtonTextStyle(
-                                                  widget.movieId),
-                                            ),
-                                          ),
-                                        )
-                                      : const SizedBox();
-                                }
-                              }),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25, 10, 25, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
                             child: SizedBox(
                                 width: double.maxFinite,
                                 child: FloatingActionButton(
                                   backgroundColor:
                                       getMovieColor(context, widget.movieId),
-                                  onPressed: () => showTorrentOptions(
-                                      context,
-                                      widget.movieId,
-                                      widget.movieTitle,
-                                      releaseDate,
-                                      imdbId),
+                                  onPressed: () => _launchTrailer(widget.movieTitle),
                                   child: Text(
-                                    'Torrent Search',
+                                    'Watch Trailer',
                                     style:
                                         getMovieButtonTextStyle(widget.movieId),
                                   ),
