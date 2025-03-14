@@ -1,8 +1,23 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+} else {
+    keystoreProperties["storeFile"] = "/Users/pasindu/Documents/mirarr-main/android/app/keystore.jks"
+    keystoreProperties["storePassword"] = "123123"
+    keystoreProperties["keyAlias"] = "key0"
+    keystoreProperties["keyPassword"] = "123123"
+}
+
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -28,7 +43,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.mirarrapp.Mirarr"
+    namespace "com.cinevaultapp.cinevault"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -46,7 +61,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mirarrapp.Mirarr"
+        applicationId "com.cinevaultapp.cinevault"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -55,15 +70,16 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(System.getenv("KEYSTORE_FILE") ?: "keystore.jks")
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file(keystoreProperties["storeFile"] ?: "keystore.jks")
+            storePassword keystoreProperties["storePassword"] as String
+            keyAlias keystoreProperties["keyAlias"] as String
+            keyPassword keystoreProperties["keyPassword"] as String
         }
     }
+
     buildTypes {
         release {
-        signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
 }

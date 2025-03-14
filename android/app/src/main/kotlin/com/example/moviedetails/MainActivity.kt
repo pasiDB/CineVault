@@ -1,4 +1,4 @@
-package com.mirarrapp.Mirarr
+package com.cinevaultapp.cinevault
 
 import io.flutter.embedding.android.FlutterActivity
 
