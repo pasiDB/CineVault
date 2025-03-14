@@ -140,7 +140,7 @@ class ConnectivityWidget extends StatelessWidget {
           builder: (BuildContext context) {
             // Check for updates
             WidgetsBinding.instance.addPostFrameCallback((_) {
-             UpdateChecker.checkForUpdate(context);
+            //  UpdateChecker.checkForUpdate(context);
             });
             return const MovieSearchScreen();
           },
