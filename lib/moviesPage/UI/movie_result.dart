@@ -90,11 +90,11 @@ class MovieSearchResult extends StatelessWidget {
                         return snapshot.data == true
                             ? const Icon(
                                 Icons.download_rounded,
-                                color: Colors.yellow,
+                                color: Colors.transparent,
                               )
                             : const Icon(
                                 Icons.file_download_off_sharp,
-                                color: Colors.yellow,
+                                color: Colors.transparent,
                               );
                       }
                     },

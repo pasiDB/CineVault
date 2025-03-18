@@ -221,7 +221,7 @@ class _SearchScreenState extends State<SearchScreen>
                         visible: _searchController.text.isNotEmpty,
                         child: const Icon(
                           Icons.clear,
-                          color: Colors.white,
+                          color: Colors.transparent,
                         ),
                       ),
                       onPressed: () {
@@ -301,7 +301,7 @@ class _SearchScreenState extends State<SearchScreen>
                         visible: _searchController.text.isNotEmpty,
                         child: const Icon(
                           Icons.clear,
-                          color: Colors.white,
+                          color: Colors.transparent,
                         ),
                       ),
                       onPressed: () {
@@ -381,7 +381,7 @@ class _SearchScreenState extends State<SearchScreen>
                         visible: _searchController.text.isNotEmpty,
                         child: const Icon(
                           Icons.clear,
-                          color: Colors.white,
+                          color: Colors.transparent,
                         ),
                       ),
                       onPressed: () {
