@@ -179,9 +179,9 @@ class _SearchScreenState extends State<SearchScreen>
           Tab(
             icon: Icon(Icons.people),
           ),
-          Tab(
-            icon: Icon(Icons.explore),
-          )
+          // Tab(
+          //   icon: Icon(Icons.explore),
+          // )
         ],
       ),
       body: TabBarView(

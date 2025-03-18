@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
+  change_app_package_name: ^1.1.0
   flutter:
     sdk: flutter
   http: 1.1.0
