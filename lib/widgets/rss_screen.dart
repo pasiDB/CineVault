@@ -149,7 +149,7 @@ class _RssScreenState extends State<RssScreen> with TickerProviderStateMixin {
           },
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

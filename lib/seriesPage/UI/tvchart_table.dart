@@ -76,12 +76,12 @@ class _TvChartTableState extends State<TvChartTable> {
 
     try {
       final ratingNum = double.parse(rating);
-      if (ratingNum >= 9.0) return Colors.green.shade900.withOpacity(0.5);
-      if (ratingNum >= 8.5) return Colors.green.withOpacity(0.5);
-      if (ratingNum >= 8.0) return Colors.lightGreen.withOpacity(0.5);
-      if (ratingNum >= 7.0) return Colors.yellow.withOpacity(0.5);
-      if (ratingNum >= 6.0) return Colors.orange.withOpacity(0.5);
-      return Colors.red.withOpacity(0.5);
+      if (ratingNum >= 9.0) return Colors.green.shade900.withValues(alpha: 0.5);
+      if (ratingNum >= 8.5) return Colors.green.withValues(alpha: 0.5);
+      if (ratingNum >= 8.0) return Colors.lightGreen.withValues(alpha: 0.5);
+      if (ratingNum >= 7.0) return Colors.yellow.withValues(alpha: 0.5);
+      if (ratingNum >= 6.0) return Colors.orange.withValues(alpha: 0.5);
+      return Colors.red.withValues(alpha: 0.5);
     } catch (e) {
       // Return grey if rating can't be parsed to double
       return Colors.grey;
@@ -216,7 +216,9 @@ class _TvChartTableState extends State<TvChartTable> {
                     // Header row
                     TableRow(
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
+                        color: Theme.of(context)
+                            .primaryColor
+                            .withValues(alpha: 0.1),
                       ),
                       children: [
                         const TableCell(
@@ -358,7 +360,7 @@ class _TvChartTableState extends State<TvChartTable> {
                 children: [
                   TableRow(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.1),
+                      color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
                     ),
                     children: [
                       const TableCell(

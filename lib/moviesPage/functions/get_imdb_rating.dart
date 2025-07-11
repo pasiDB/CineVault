@@ -26,7 +26,7 @@ Future<void> getMovieRatings(String? imdbId, Function(String) updateImdbRating,
     }
   } catch (error) {
     if (kDebugMode) {
-      print('Error: $error');
+      debugPrint('Error: $error');
     }
   }
 }

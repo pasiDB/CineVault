@@ -82,7 +82,7 @@ class _DiscoverMoviesPageState extends State<DiscoverMoviesPage> {
         throw Exception('Failed to load genres');
       }
     } catch (e) {
-      print('Error fetching genres: $e');
+      debugPrint('Error fetching genres: $e');
     }
   }
 
@@ -146,7 +146,7 @@ class _DiscoverMoviesPageState extends State<DiscoverMoviesPage> {
       setState(() {
         isLoading = false;
       });
-      print('Error fetching movies: $e');
+      debugPrint('Error fetching movies: $e');
     }
   }
 
@@ -174,7 +174,7 @@ class _DiscoverMoviesPageState extends State<DiscoverMoviesPage> {
         throw Exception('Failed to search people');
       }
     } catch (e) {
-      print('Error searching people: $e');
+      debugPrint('Error searching people: $e');
       return [];
     }
   }

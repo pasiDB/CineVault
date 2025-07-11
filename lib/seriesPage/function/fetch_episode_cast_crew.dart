@@ -37,7 +37,7 @@ Future<Map<String, List<Map<String, dynamic>>>> fetchEpisodeCastAndCrew(
     }
   } catch (e) {
     if (kDebugMode) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return {
       'guest_stars': [],

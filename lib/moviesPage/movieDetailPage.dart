@@ -11,8 +11,6 @@ import 'package:Mirarr/moviesPage/functions/get_imdb_rating.dart';
 import 'package:Mirarr/moviesPage/functions/movie_tmdb_actions.dart';
 import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
 import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
-import 'package:Mirarr/moviesPage/functions/torrent_links.dart';
-import 'package:Mirarr/moviesPage/functions/watch_links.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -22,7 +20,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 import 'package:Mirarr/moviesPage/UI/cast_crew_row.dart';
 import 'package:Mirarr/widgets/bottom_bar.dart';
-import 'package:Mirarr/moviesPage/functions/check_availability.dart';
 import 'package:Mirarr/widgets/custom_divider.dart';
 import 'package:Mirarr/widgets/image_gallery_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -195,12 +192,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   Future<void> _launchTrailer(String movieTitle) async {
     final query = Uri.encodeComponent('$movieTitle trailer');
     final url = 'https://www.youtube.com/results?search_query=$query';
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
       );
     } else {
       throw 'Could not launch $url';
@@ -863,7 +859,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                 child: FloatingActionButton(
                                   backgroundColor:
                                       getMovieColor(context, widget.movieId),
-                                  onPressed: () => _launchTrailer(widget.movieTitle),
+                                  onPressed: () =>
+                                      _launchTrailer(widget.movieTitle),
                                   child: Text(
                                     'Watch Trailer',
                                     style:

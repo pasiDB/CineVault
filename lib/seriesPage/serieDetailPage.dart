@@ -5,7 +5,6 @@ import 'package:Mirarr/functions/fetchers/fetch_series_credits.dart';
 import 'package:Mirarr/functions/get_base_url.dart';
 import 'package:Mirarr/functions/regionprovider_class.dart';
 import 'package:Mirarr/functions/share_content.dart';
-import 'package:Mirarr/seriesPage/UI/seasons_details.dart';
 import 'package:Mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
 import 'package:Mirarr/seriesPage/function/get_imdb_rating_series.dart';
 import 'package:Mirarr/seriesPage/function/series_tmdb_actions.dart';
@@ -179,27 +178,11 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
   Future<void> _launchTrailer(String seriesTitle) async {
     final query = Uri.encodeComponent('$seriesTitle trailer');
     final url = 'https://www.youtube.com/results?search_query=$query';
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  Future<void> _launchDetails(String seriesTitle) async {
-    final query = Uri.encodeComponent('$seriesTitle details');
-    final url = 'https://www.google.com/search?q=$query';
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
       );
     } else {
       throw 'Could not launch $url';
@@ -856,11 +839,12 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                                 child: FloatingActionButton(
                                   backgroundColor:
                                       getSeriesColor(context, widget.serieId),
-                                  onPressed: () => _launchTrailer(widget.serieName),
+                                  onPressed: () =>
+                                      _launchTrailer(widget.serieName),
                                   child: Text(
                                     'Watch Trailer',
-                                    style:
-                                        getSeriesButtonTextStyle(widget.serieId),
+                                    style: getSeriesButtonTextStyle(
+                                        widget.serieId),
                                   ),
                                 )))
                       ],

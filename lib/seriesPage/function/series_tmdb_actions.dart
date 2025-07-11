@@ -32,7 +32,7 @@ Future<void> addRating(String sessionId, int serieId, double userScore,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Rating added for $serieId successfully!');
+        debugPrint('Rating added for $serieId successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add rating for $serieId', context);
@@ -61,7 +61,7 @@ Future<void> removeRating(
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Rating removed for $serieId successfully!');
+        debugPrint('Rating removed for $serieId successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to remove rating for $serieId', context);
@@ -98,7 +98,7 @@ Future<void> addWatchList(String accountId, String sessionId, int serieId,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Serie added to watchlist successfully!');
+        debugPrint('Serie added to watchlist successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add serie to watchlist', context);
@@ -135,7 +135,7 @@ Future<void> addFavorite(String accountId, String sessionId, int serieId,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Serie added to favorites successfully!');
+        debugPrint('Serie added to favorites successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add serie to favorites', context);
@@ -172,7 +172,7 @@ Future<void> removeFromWatchList(String accountId, String sessionId,
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Serie removed from watchlist successfully!');
+        debugPrint('Serie removed from watchlist successfully!');
       }
     } else {
       showErrorDialog(
@@ -210,7 +210,7 @@ Future<void> removeFromFavorite(String accountId, String sessionId, int serieId,
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Serie removed from favorites successfully!');
+        debugPrint('Serie removed from favorites successfully!');
       }
     } else {
       showErrorDialog(

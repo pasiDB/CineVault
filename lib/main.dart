@@ -1,7 +1,6 @@
 import 'package:Mirarr/functions/themeprovider_class.dart';
 import 'package:Mirarr/functions/regionprovider_class.dart';
 import 'package:Mirarr/functions/url_parser.dart';
-import 'package:Mirarr/widgets/check_updates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';

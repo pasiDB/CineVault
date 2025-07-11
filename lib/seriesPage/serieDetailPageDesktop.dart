@@ -172,7 +172,7 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
       }
     } catch (e) {
       if (kDebugMode) {
-        print('Error: $e');
+        debugPrint('Error: $e');
       }
     }
   }

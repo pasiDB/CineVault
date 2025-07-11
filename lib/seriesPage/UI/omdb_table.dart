@@ -32,15 +32,15 @@ class _OmdbTableState extends State<OmdbTable> {
         throw Exception('OMDB API key not found in .env file');
       }
 
-      print('Fetching data for series: ${widget.imdbId}');
+      debugPrint('Fetching data for series: ${widget.imdbId}');
 
       final seasonResponse = await http.get(
         Uri.parse(
             'http://www.omdbapi.com/?i=${widget.imdbId}&apikey=$omdbApiKey'),
       );
 
-      print('Season response status: ${seasonResponse.statusCode}');
-      print('Season response body: ${seasonResponse.body}');
+      debugPrint('Season response status: ${seasonResponse.statusCode}');
+      debugPrint('Season response body: ${seasonResponse.body}');
 
       if (seasonResponse.statusCode != 200) {
         throw Exception(
@@ -58,10 +58,10 @@ class _OmdbTableState extends State<OmdbTable> {
       }
 
       final totalSeasons = int.parse(seriesData['totalSeasons']);
-      print('Total seasons: $totalSeasons');
+      debugPrint('Total seasons: $totalSeasons');
 
       for (int season = 1; season <= totalSeasons; season++) {
-        print('Fetching season $season');
+        debugPrint('Fetching season $season');
 
         final response = await http.get(
           Uri.parse(
@@ -81,18 +81,18 @@ class _OmdbTableState extends State<OmdbTable> {
                     ))
                 .toList();
 
-            print('Season $season: ${episodes.length} episodes');
+            debugPrint('Season $season: ${episodes.length} episodes');
 
             setState(() {
               _seasonEpisodes[season] = episodes;
             });
           }
         } else {
-          print('Failed to fetch season $season: ${response.statusCode}');
+          debugPrint('Failed to fetch season $season: ${response.statusCode}');
         }
       }
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
       setState(() {
         _error = e.toString();
       });
@@ -233,7 +233,7 @@ class _OmdbTableState extends State<OmdbTable> {
                                   decoration: BoxDecoration(
                                     color: Theme.of(context)
                                         .primaryColor
-                                        .withOpacity(0.1),
+                                        .withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: const Text('Episode'),
@@ -250,7 +250,7 @@ class _OmdbTableState extends State<OmdbTable> {
                                     decoration: BoxDecoration(
                                       color: Theme.of(context)
                                           .primaryColor
-                                          .withOpacity(0.1),
+                                          .withValues(alpha: 0.1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text('S$season'),
@@ -272,7 +272,7 @@ class _OmdbTableState extends State<OmdbTable> {
                                         decoration: BoxDecoration(
                                           color: Theme.of(context)
                                               .primaryColor
-                                              .withOpacity(0.05),
+                                              .withValues(alpha: 0.05),
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
@@ -304,13 +304,13 @@ class _OmdbTableState extends State<OmdbTable> {
                                                           'N/A')
                                                       .firstOrNull ??
                                                   '-',
-                                            ).withOpacity(0.3),
+                                            ).withValues(alpha: 0.3),
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.black
-                                                    .withOpacity(0.05),
+                                                    .withValues(alpha: 0.05),
                                                 blurRadius: 4,
                                                 offset: const Offset(0, 2),
                                               ),

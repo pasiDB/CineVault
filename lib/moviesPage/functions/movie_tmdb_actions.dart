@@ -36,7 +36,7 @@ Future<void> addWatchList(String accountId, String sessionId, int movieId,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Movie added to watchlist successfully!');
+        debugPrint('Movie added to watchlist successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add movie to watchlist', context);
@@ -70,7 +70,7 @@ Future<void> addRating(String sessionId, int movieId, double userScore,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Rating added for $movieId successfully!');
+        debugPrint('Rating added for $movieId successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add rating for $movieId', context);
@@ -99,7 +99,7 @@ Future<void> removeRating(
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Rating removed for $movieId successfully!');
+        debugPrint('Rating removed for $movieId successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to remove rating for $movieId', context);
@@ -136,7 +136,7 @@ Future<void> addFavorite(String accountId, String sessionId, int movieId,
 
     if (response.statusCode == 201) {
       if (kDebugMode) {
-        print('Movie added to favorites successfully!');
+        debugPrint('Movie added to favorites successfully!');
       }
     } else {
       showErrorDialog('Error', 'Failed to add movie to favorites', context);
@@ -173,7 +173,7 @@ Future<void> removeFromWatchList(String accountId, String sessionId,
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Movie removed from watchlist successfully!');
+        debugPrint('Movie removed from watchlist successfully!');
       }
     } else {
       showErrorDialog(
@@ -211,7 +211,7 @@ Future<void> removeFromFavorite(String accountId, String sessionId, int movieId,
 
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print('Movie removed from favorites successfully!');
+        debugPrint('Movie removed from favorites successfully!');
       }
     } else {
       showErrorDialog(

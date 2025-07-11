@@ -81,7 +81,7 @@ class ThemeProvider extends ChangeNotifier {
 
 class AppThemes {
   static final ThemeData orangeTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -97,10 +97,8 @@ class AppThemes {
       onSecondary: Color.fromARGB(255, 163, 12, 12),
       error: Colors.red,
       onError: Color.fromARGB(255, 255, 42, 0),
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: const Color.fromARGB(255, 255, 34, 34),
     secondaryHeaderColor: const Color.fromARGB(255, 255, 35, 34),
@@ -110,7 +108,7 @@ class AppThemes {
   );
 
   static final ThemeData blueTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -126,10 +124,8 @@ class AppThemes {
       onSecondary: Colors.blueAccent,
       error: Colors.red,
       onError: Colors.blue,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.blueAccent,
     secondaryHeaderColor: Colors.blueAccent,
@@ -139,7 +135,7 @@ class AppThemes {
   );
 
   static final ThemeData redTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -155,10 +151,8 @@ class AppThemes {
       onSecondary: Colors.pinkAccent,
       error: Color.fromARGB(255, 163, 12, 12),
       onError: Colors.red,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.redAccent,
     secondaryHeaderColor: Colors.redAccent,
@@ -168,7 +162,7 @@ class AppThemes {
   );
 
   static final ThemeData greyTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -184,10 +178,8 @@ class AppThemes {
       onSecondary: Colors.grey,
       error: Colors.red,
       onError: Colors.grey,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.blueGrey,
     secondaryHeaderColor: Colors.blueGrey,
@@ -197,7 +189,7 @@ class AppThemes {
   );
 
   static final ThemeData yellowTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -213,10 +205,8 @@ class AppThemes {
       onSecondary: Colors.yellowAccent,
       error: Colors.red,
       onError: Colors.yellow,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.amber,
     secondaryHeaderColor: Colors.amber,
@@ -226,7 +216,7 @@ class AppThemes {
   );
 
   static final ThemeData brownTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -242,10 +232,8 @@ class AppThemes {
       onSecondary: Colors.brown,
       error: Colors.red,
       onError: Colors.brown,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.amber,
     secondaryHeaderColor: Colors.amber,
@@ -254,7 +242,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.black,
   );
   static final ThemeData greenTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -270,10 +258,8 @@ class AppThemes {
       onSecondary: Colors.greenAccent,
       error: Colors.red,
       onError: Colors.green,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.greenAccent,
     secondaryHeaderColor: Colors.greenAccent,
@@ -282,7 +268,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.black,
   );
   static final ThemeData monoFontTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -298,10 +284,8 @@ class AppThemes {
       onSecondary: Colors.grey,
       error: Colors.red,
       onError: Colors.grey,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.blueGrey,
     secondaryHeaderColor: Colors.blueGrey,
@@ -311,7 +295,7 @@ class AppThemes {
   );
 
   static final ThemeData nothingFontTheme = ThemeData(
-    progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
         TargetPlatform.values,
@@ -327,10 +311,8 @@ class AppThemes {
       onSecondary: Colors.grey,
       error: Colors.red,
       onError: Colors.grey,
-      background: Colors.black,
-      onBackground: Colors.black,
       surface: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     highlightColor: Colors.blueGrey,
     secondaryHeaderColor: Colors.blueGrey,
