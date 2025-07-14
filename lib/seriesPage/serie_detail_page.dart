@@ -88,10 +88,10 @@ class SerieDetailPageState extends State<SerieDetailPage> {
   }
 
   Future<void> checkAccountState() async {
-    final openbox = await Hive.openBox('sessionBox');
-    final sessionId = openbox.get('sessionData');
     final region =
         Provider.of<RegionProvider>(context, listen: false).currentRegion;
+    final openbox = await Hive.openBox('sessionBox');
+    final sessionId = openbox.get('sessionData');
     final baseUrl = getBaseUrl(region);
     final response = await http.get(
       Uri.parse(

@@ -40,16 +40,13 @@ class SettingsPage extends StatelessWidget {
                         .setTheme(AppThemes.orangeTheme);
                   },
                 ),
-                ListTile(
-                  title: const Text(
+                const ListTile(
+                  title: Text(
                     'Blue Theme',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                  trailing: const Icon(Icons.circle, color: Colors.blue),
-                  onTap: () {
-                    Provider.of<ThemeProvider>(context, listen: false)
-                        .setTheme(AppThemes.blueTheme);
-                  },
+                  trailing: Icon(Icons.circle, color: Colors.blue),
+                  // onTap cannot be const
                 ),
                 ListTile(
                   title: const Text(

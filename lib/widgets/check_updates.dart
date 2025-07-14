@@ -6,12 +6,11 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class UpdateChecker {
   static Future<void> checkForUpdate(BuildContext context) async {
-    if (!context.mounted) return;
+    // The context.mounted check should be done in the calling widget, not here.
     final currentVersion = await _getCurrentVersion();
-    if (!context.mounted) return;
     final latestVersion = await _getLatestVersion();
-    if (!context.mounted) return;
 
+    if (!context.mounted) return;
     if (latestVersion != null &&
         _isNewerVersion(currentVersion, latestVersion)) {
       _showUpdateDialog(context, latestVersion);
@@ -53,9 +52,9 @@ class UpdateChecker {
             'Update Available',
             style: TextStyle(color: Theme.of(context).primaryColor),
           ),
-          content: Text(
-              'A new version ($newVersion) is available. Would you like to update?',
-              style: const TextStyle(color: Colors.white)),
+          content: const Text(
+              'A new version is available. Would you like to update?',
+              style: TextStyle(color: Colors.white)),
           actions: <Widget>[
             TextButton(
               child: Text('Later',
@@ -78,8 +77,8 @@ class UpdateChecker {
   }
 
   static Future<void> _launchURL(String url) async {
-    if (await canLaunchUrlString(url.toString())) {
-      await launchUrlString(url.toString());
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       throw 'Could not launch $url';
     }

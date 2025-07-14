@@ -109,10 +109,10 @@ class MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   Future<void> checkAccountState() async {
-    final openbox = await Hive.openBox('sessionBox');
-    final sessionId = openbox.get('sessionData');
     final region =
         Provider.of<RegionProvider>(context, listen: false).currentRegion;
+    final openbox = await Hive.openBox('sessionBox');
+    final sessionId = openbox.get('sessionData');
     final baseUrl = getBaseUrl(region);
     final response = await http.get(
       Uri.parse(
@@ -618,7 +618,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                                         ),
                                         GestureDetector(
                                           onTap: () async {
-                                            if (!mounted) return;
+                                            if (!context.mounted) return;
                                             final openbox = await Hive.openBox(
                                                 'sessionBox');
 

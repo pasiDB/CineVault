@@ -144,12 +144,14 @@ class _TvChartTableState extends State<TvChartTable> {
     if (_error != null) {
       // Show error message briefly before navigation
       Future.delayed(const Duration(seconds: 2), () {
+        final localContext = context;
+        if (!localContext.mounted) return;
         Navigator.pushReplacement(
-          context,
+          localContext,
           MaterialPageRoute(
             builder: (context) => OmdbTable(
               imdbId: widget.imdbId,
-              title: 'Episode Ratings', // Or pass a title if you have it stored
+              title: 'Episode Ratings',
             ),
           ),
         );
@@ -360,7 +362,8 @@ class _TvChartTableState extends State<TvChartTable> {
                 children: [
                   TableRow(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
+                      color:
+                          Theme.of(context).primaryColor.withValues(alpha: 0.1),
                     ),
                     children: [
                       const TableCell(

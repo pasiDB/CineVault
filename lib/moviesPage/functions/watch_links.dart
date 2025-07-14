@@ -1,9 +1,9 @@
-import 'package:Mirarr/functions/regionprovider_class.dart';
+// import 'package:Mirarr/functions/regionprovider_class.dart';
 import 'package:Mirarr/functions/show_error_dialog.dart';
 import 'package:Mirarr/moviesPage/checkers/custom_tmdb_ids_effects.dart';
 import 'package:Mirarr/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -42,6 +42,8 @@ void showWatchOptions(BuildContext context, int movieId, String movieTitle,
   // Fetch sources before using context in showModalBottomSheet
   Map<String, Map<String, dynamic>> optionUrls = await fetchSources();
 
+  if (!context.mounted) return;
+
   // Replace hardcoded URLs with dynamic ones
   optionUrls = optionUrls.map((key, value) {
     final url =
@@ -56,8 +58,7 @@ void showWatchOptions(BuildContext context, int movieId, String movieTitle,
     context: context,
     builder: (BuildContext bottomSheetContext) {
       Color mainColor = getColor(context, movieId);
-      final region = Provider.of<RegionProvider>(context).currentRegion;
-      final year = releaseDate.split('-')[0];
+      // final year = releaseDate.split('-')[0];
       return Column(
         children: [
           Padding(

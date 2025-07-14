@@ -10,7 +10,7 @@ import 'package:Mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
 import 'package:Mirarr/seriesPage/function/get_imdb_rating_series.dart';
 import 'package:Mirarr/seriesPage/function/series_tmdb_actions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hive/hive.dart';
@@ -87,10 +87,10 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
   }
 
   Future<void> checkAccountState() async {
-    final openbox = await Hive.openBox('sessionBox');
-    final sessionId = openbox.get('sessionData');
     final region =
         Provider.of<RegionProvider>(context, listen: false).currentRegion;
+    final openbox = await Hive.openBox('sessionBox');
+    final sessionId = openbox.get('sessionData');
     final baseUrl = getBaseUrl(region);
     final response = await http.get(
       Uri.parse(

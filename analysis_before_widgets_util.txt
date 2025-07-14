@@ -1,0 +1,46 @@
+Analyzing CineVault...                                          
+
+   info • Don't use 'BuildContext's across async gaps • lib/moviesPage/functions/watch_links.dart:56:5 • use_build_context_synchronously
+   info • The type of the right operand ('ConnectivityResult') isn't a subtype or a supertype of the left operand ('List<ConnectivityResult>') • lib/moviesPage/main_page.dart:152:28 • unrelated_type_equality_checks
+   info • Don't use 'BuildContext's across async gaps • lib/moviesPage/movie_detail_page.dart:634:60 • use_build_context_synchronously
+   info • Use 'const' with the constructor to improve performance • lib/moviesPage/movie_detail_page.dart:1277:28 • prefer_const_constructors
+   info • Don't use 'BuildContext's across async gaps • lib/moviesPage/movie_detail_page_desktop.dart:542:72 • use_build_context_synchronously
+   info • Use 'const' with the constructor to improve performance • lib/moviesPage/movie_detail_page_desktop.dart:1344:28 • prefer_const_constructors
+   info • Don't use 'BuildContext's across async gaps • lib/seriesPage/UI/tvchart_table.dart:148:11 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/seriesPage/function/watch_links_series.dart:53:5 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:439:67 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:449:67 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:489:67 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:499:67 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:574:67 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:600:65 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:602:58 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/seriesPage/serie_detail_page.dart:690:71 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/seriesPage/serie_detail_page_desktop.dart:504:72 • use_build_context_synchronously
+   info • Statements in an if should be enclosed in a block • lib/seriesPage/serie_detail_page_desktop.dart:588:65 • curly_braces_in_flow_control_structures
+   info • Use 'const' with the constructor to improve performance • lib/seriesPage/serie_detail_page_desktop.dart:971:28 • prefer_const_constructors
+   info • The type of the right operand ('ConnectivityResult') isn't a subtype or a supertype of the left operand ('List<ConnectivityResult>') • lib/seriesPage/series_page.dart:148:28 • unrelated_type_equality_checks
+   info • Use 'const' with the constructor to improve performance • lib/widgets/bottom_bar.dart:45:49 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/widgets/bottom_bar.dart:68:51 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/widgets/bottom_bar.dart:102:14 • prefer_const_literals_to_create_immutables
+   info • Constructors for public widgets should have a named 'key' parameter • lib/widgets/discover/discover_with_filters.dart:36:7 • use_key_in_widget_constructors
+   info • Invalid use of a private type in a public API • lib/widgets/discover/discover_with_filters.dart:38:3 • library_private_types_in_public_api
+   info • Invalid use of a private type in a public API • lib/widgets/discover/genre_chips.dart:22:3 • library_private_types_in_public_api
+   info • Invalid use of a private type in a public API • lib/widgets/login.dart:19:3 • library_private_types_in_public_api
+   info • Use of 'return' in a 'finally' clause • lib/widgets/login.dart:82:21 • control_flow_in_finally
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/login.dart:129:7 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:67:37 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:104:37 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:141:37 • use_build_context_synchronously
+   info • The type of the right operand ('ConnectivityResult') isn't a subtype or a supertype of the left operand ('List<ConnectivityResult>') • lib/widgets/profile.dart:223:28 • unrelated_type_equality_checks
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:228:27 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:229:24 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:230:27 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:231:24 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:232:27 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:233:20 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:243:37 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:279:37 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/profile.dart:315:37 • use_build_context_synchronously
+   info • The package name 'Mirarr' isn't a lower_case_with_underscores identifier • pubspec.yaml:1:7 • package_names
+

@@ -34,11 +34,13 @@ class Genre {
 enum GenreSelection { include, exclude, none }
 
 class DiscoverMoviesPage extends StatefulWidget {
+  const DiscoverMoviesPage({Key? key}) : super(key: key);
+
   @override
-  _DiscoverMoviesPageState createState() => _DiscoverMoviesPageState();
+  DiscoverMoviesPageState createState() => DiscoverMoviesPageState();
 }
 
-class _DiscoverMoviesPageState extends State<DiscoverMoviesPage> {
+class DiscoverMoviesPageState extends State<DiscoverMoviesPage> {
   RangeValues _yearRange = const RangeValues(1900, 2024);
   List<Movie> movies = [];
   int crossAxisCount = Platform.isAndroid || Platform.isIOS ? 2 : 4;

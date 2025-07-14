@@ -37,6 +37,7 @@ Color getColor(BuildContext context, int serieId) =>
 void showWatchOptions(BuildContext context, int serieId, int seasonNumber,
     int episodeNumber) async {
   Map<String, Map<String, dynamic>> optionUrls = await fetchTvSources();
+  if (!context.mounted) return;
 
   optionUrls = optionUrls.map((key, value) {
     final url = value['url']

@@ -19,10 +19,10 @@ class GenreBottomSheet extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GenreBottomSheetState createState() => _GenreBottomSheetState();
+  GenreBottomSheetState createState() => GenreBottomSheetState();
 }
 
-class _GenreBottomSheetState extends State<GenreBottomSheet> {
+class GenreBottomSheetState extends State<GenreBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return ListView(

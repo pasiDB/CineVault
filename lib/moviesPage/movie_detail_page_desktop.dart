@@ -119,10 +119,10 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
   }
 
   Future<void> checkAccountState() async {
-    final openbox = await Hive.openBox('sessionBox');
-    final sessionId = openbox.get('sessionData');
     final region =
         Provider.of<RegionProvider>(context, listen: false).currentRegion;
+    final openbox = await Hive.openBox('sessionBox');
+    final sessionId = openbox.get('sessionData');
     final baseUrl = getBaseUrl(region);
     final response = await http.get(
       Uri.parse(
@@ -519,7 +519,8 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () async {
-                                                        if (!mounted) return;
+                                                        if (!context.mounted)
+                                                          return;
                                                         final openbox =
                                                             await Hive.openBox(
                                                                 'sessionBox');
@@ -532,8 +533,9 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                             await removeRating(
                                                                 sessionData,
                                                                 widget.movieId);
-                                                        if (error != null &&
-                                                            context.mounted) {
+                                                        if (!context.mounted)
+                                                          return;
+                                                        if (error != null) {
                                                           showErrorDialog(
                                                               'Error',
                                                               error,
