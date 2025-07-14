@@ -11,7 +11,7 @@ import 'package:Mirarr/moviesPage/functions/get_imdb_rating.dart';
 import 'package:Mirarr/moviesPage/functions/movie_tmdb_actions.dart';
 import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
 import 'package:Mirarr/moviesPage/functions/torrent_links.dart';
-import 'package:Mirarr/moviesPage/movieDetailPage.dart';
+import 'package:Mirarr/moviesPage/movie_detail_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -36,10 +36,10 @@ class MovieDetailPageDesktop extends StatefulWidget {
       {super.key, required this.movieTitle, required this.movieId});
 
   @override
-  _MovieDetailPageDesktopState createState() => _MovieDetailPageDesktopState();
+  MovieDetailPageDesktopState createState() => MovieDetailPageDesktopState();
 }
 
-class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
+class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
   late Future<List<String>> _castImagesFuture;
   bool? isMovieWatchlist;
   bool? isMovieFavorite;
@@ -310,6 +310,7 @@ class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                         visible: isUserLoggedIn == true,
                                         child: GestureDetector(
                                           onTap: () async {
+                                            if (!mounted) return;
                                             if (isMovieWatchlist == null) {
                                               return;
                                             }
@@ -360,6 +361,7 @@ class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                               5, 0, 0, 0),
                                           child: GestureDetector(
                                             onTap: () async {
+                                              if (!mounted) return;
                                               if (isMovieFavorite == null) {
                                                 return;
                                               }
@@ -453,6 +455,7 @@ class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                         ),
                                                         onRatingUpdate:
                                                             (rating) async {
+                                                          if (!mounted) return;
                                                           final movieId =
                                                               widget.movieId;
                                                           final openbox =
@@ -482,6 +485,7 @@ class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () async {
+                                                        if (!mounted) return;
                                                         final openbox =
                                                             await Hive.openBox(
                                                                 'sessionBox');
@@ -567,6 +571,7 @@ class _MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                         ),
                                                         onRatingUpdate:
                                                             (rating) async {
+                                                          if (!mounted) return;
                                                           final movieId =
                                                               widget.movieId;
                                                           final openbox =

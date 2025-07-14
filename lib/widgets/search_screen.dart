@@ -25,10 +25,10 @@ class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  SearchScreenState createState() => SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen>
+class SearchScreenState extends State<SearchScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   List<Movie> movieResults = [];

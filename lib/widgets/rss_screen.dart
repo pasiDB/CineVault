@@ -8,13 +8,13 @@ import 'package:webfeed_plus/domain/rss_category.dart';
 import 'package:webfeed_plus/domain/rss_feed.dart';
 
 class RssScreen extends StatefulWidget {
-  RssScreen({Key? key}) : super(key: key);
+  const RssScreen({Key? key}) : super(key: key);
 
   @override
-  _RssScreenState createState() => _RssScreenState();
+  RssScreenState createState() => RssScreenState();
 }
 
-class _RssScreenState extends State<RssScreen> with TickerProviderStateMixin {
+class RssScreenState extends State<RssScreen> with TickerProviderStateMixin {
   late Future<RssFeed> _feedFuture;
   late TabController _tabController;
 

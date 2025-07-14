@@ -30,10 +30,10 @@ class SerieDetailPage extends StatefulWidget {
       {super.key, required this.serieName, required this.serieId});
 
   @override
-  _SerieDetailPageState createState() => _SerieDetailPageState();
+  SerieDetailPageState createState() => SerieDetailPageState();
 }
 
-class _SerieDetailPageState extends State<SerieDetailPage> {
+class SerieDetailPageState extends State<SerieDetailPage> {
   final apiKey = dotenv.env['TMDB_API_KEY'];
   Map<String, dynamic>? serieDetails;
   Map<String, dynamic>? externalIds;
@@ -422,6 +422,7 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                           right: 30,
                           child: GestureDetector(
                             onTap: () async {
+                              if (!mounted) return;
                               if (isSerieWatchlist == null) {
                                 return;
                               }
@@ -465,6 +466,7 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                           right: 30,
                           child: GestureDetector(
                             onTap: () async {
+                              if (!mounted) return;
                               if (isSerieFavorite == null) {
                                 return;
                               }
@@ -543,6 +545,7 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                                             color: Colors.amber,
                                           ),
                                           onRatingUpdate: (rating) async {
+                                            if (!mounted) return;
                                             final movieId = widget.serieId;
                                             final openbox = await Hive.openBox(
                                                 'sessionBox');
@@ -564,6 +567,7 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                                       ),
                                       GestureDetector(
                                         onTap: () async {
+                                          if (!mounted) return;
                                           final openbox =
                                               await Hive.openBox('sessionBox');
 
@@ -644,6 +648,7 @@ class _SerieDetailPageState extends State<SerieDetailPage> {
                                                 color: Colors.amber,
                                               ),
                                               onRatingUpdate: (rating) async {
+                                                if (!mounted) return;
                                                 final movieId = widget.serieId;
                                                 final openbox =
                                                     await Hive.openBox(

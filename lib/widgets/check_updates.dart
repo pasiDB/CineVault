@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class UpdateChecker {
   static Future<void> checkForUpdate(BuildContext context) async {
+    if (!context.mounted) return;
     final currentVersion = await _getCurrentVersion();
     final latestVersion = await _getLatestVersion();
 

@@ -30,10 +30,10 @@ class SerieDetailPageDesktop extends StatefulWidget {
       {super.key, required this.serieName, required this.serieId});
 
   @override
-  _SerieDetailPageDesktopState createState() => _SerieDetailPageDesktopState();
+  SerieDetailPageDesktopState createState() => SerieDetailPageDesktopState();
 }
 
-class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
+class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
   final apiKey = dotenv.env['TMDB_API_KEY'];
   Map<String, dynamic>? serieDetails;
   Map<String, dynamic>? externalIds;
@@ -284,6 +284,7 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                         visible: isUserLoggedIn == true,
                                         child: GestureDetector(
                                           onTap: () async {
+                                            if (!mounted) return;
                                             if (isSerieWatchlist == null) {
                                               return;
                                             }
@@ -331,6 +332,7 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                         visible: isUserLoggedIn == true,
                                         child: GestureDetector(
                                           onTap: () async {
+                                            if (!mounted) return;
                                             if (isSerieFavorite == null) {
                                               return;
                                             }
@@ -422,6 +424,7 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                         ),
                                                         onRatingUpdate:
                                                             (rating) async {
+                                                          if (!mounted) return;
                                                           final serieId =
                                                               widget.serieId;
                                                           final openbox =
@@ -451,6 +454,7 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () async {
+                                                        if (!mounted) return;
                                                         final openbox =
                                                             await Hive.openBox(
                                                                 'sessionBox');
@@ -544,6 +548,8 @@ class _SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                             ),
                                                             onRatingUpdate:
                                                                 (rating) async {
+                                                              if (!mounted)
+                                                                return;
                                                               final serieId =
                                                                   widget
                                                                       .serieId;

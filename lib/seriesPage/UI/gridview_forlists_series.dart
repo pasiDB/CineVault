@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/seriesPage/UI/customSeriesWidget.dart';
+import 'package:Mirarr/seriesPage/UI/custom_series_widget.dart';
 import 'package:Mirarr/seriesPage/function/on_tap_serie.dart';
 import 'package:Mirarr/seriesPage/function/on_tap_serie_desktop.dart';
 import 'package:flutter/material.dart';
@@ -9,13 +9,14 @@ import 'package:flutter/material.dart';
 class ListGridViewSeries extends StatefulWidget {
   final List serieList;
 
-  ListGridViewSeries({Key? key, required this.serieList}) : super(key: key);
+  const ListGridViewSeries({Key? key, required this.serieList})
+      : super(key: key);
 
   @override
-  _ListGridViewSeriesState createState() => _ListGridViewSeriesState();
+  ListGridViewSeriesState createState() => ListGridViewSeriesState();
 }
 
-class _ListGridViewSeriesState extends State<ListGridViewSeries> {
+class ListGridViewSeriesState extends State<ListGridViewSeries> {
   @override
   Widget build(BuildContext context) {
     int crossAxisCount = Platform.isAndroid || Platform.isIOS ? 2 : 4;

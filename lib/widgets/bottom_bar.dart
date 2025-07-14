@@ -1,7 +1,7 @@
 import 'package:Mirarr/widgets/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:Mirarr/moviesPage/mainPage.dart';
-import 'package:Mirarr/seriesPage/seriesPage.dart';
+import 'package:Mirarr/moviesPage/main_page.dart';
+import 'package:Mirarr/seriesPage/series_page.dart';
 import 'package:Mirarr/widgets/login.dart';
 import 'package:Mirarr/widgets/profile.dart';
 import 'package:hive/hive.dart';
@@ -11,12 +11,12 @@ class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
 
   @override
-  _BottomBarState createState() => _BottomBarState();
+  BottomBarState createState() => BottomBarState();
 }
 
 int _selectedIndex = 0;
 
-class _BottomBarState extends State<BottomBar> {
+class BottomBarState extends State<BottomBar> {
   void toSeries() {
     setState(() {
       _selectedIndex = 1;
@@ -99,37 +99,25 @@ class _BottomBarState extends State<BottomBar> {
           }
         }
       },
-      items: const [
-        BottomNavigationBarItem(
+      items: [
+        const BottomNavigationBarItem(
           icon: Icon(
             Icons.movie,
           ),
           label: 'Movies',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(
             Icons.local_movies,
           ),
           label: 'Series',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(
             Icons.search,
           ),
           label: 'Search',
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(
-        //     Icons.rss_feed,
-        //   ),
-        //   label: 'RSS',
-        // ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(
-        //     Icons.person,
-        //   ),
-        //   label: 'Account',
-        // ),
       ],
     );
   }

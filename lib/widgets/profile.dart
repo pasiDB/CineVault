@@ -17,8 +17,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
-import 'package:Mirarr/moviesPage/UI/customMovieWidget.dart';
-import 'package:Mirarr/seriesPage/UI/customSeriesWidget.dart';
+import 'package:Mirarr/moviesPage/UI/custom_movie_widget.dart';
+import 'package:Mirarr/seriesPage/UI/custom_series_widget.dart';
 import 'package:Mirarr/seriesPage/models/serie.dart';
 import 'package:Mirarr/widgets/bottom_bar.dart';
 import 'package:Mirarr/widgets/login.dart';
@@ -27,10 +27,10 @@ import 'package:Mirarr/moviesPage/models/movie.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
 List<Serie> tvWatchList = [];
@@ -40,7 +40,7 @@ List<Movie> movieFavorites = [];
 List<Serie> tvRated = [];
 List<Movie> movieRated = [];
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePageState extends State<ProfilePage> {
   final apiKey = dotenv.env['TMDB_API_KEY'];
 
   void _logout(BuildContext context) async {
@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
     final box = await Hive.openBox('sessionBox');
     await box.delete('sessionData');
     navigator.pushReplacement(
-      MaterialPageRoute(builder: (_) => LoginPage()),
+      MaterialPageRoute(builder: (_) => const LoginPage()),
     );
   }
 
@@ -59,6 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchMovieWatchList(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
@@ -95,6 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchFavoriteMovies(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
@@ -131,6 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchRatedMovies(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
@@ -232,6 +235,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchTvWatchList(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
@@ -267,6 +271,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchFavoriteSeries(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
@@ -302,6 +307,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchRatedTv(BuildContext context) async {
+    if (!mounted) return;
     final openbox = await Hive.openBox('sessionBox');
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');

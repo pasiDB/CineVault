@@ -35,10 +35,10 @@ class MovieDetailPage extends StatefulWidget {
       {super.key, required this.movieTitle, required this.movieId});
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  MovieDetailPageState createState() => MovieDetailPageState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> {
+class MovieDetailPageState extends State<MovieDetailPage> {
   late Future<List<String>> _castImagesFuture;
   bool? isMovieWatchlist;
   bool? isMovieFavorite;
@@ -443,6 +443,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                             right: 30,
                             child: GestureDetector(
                               onTap: () async {
+                                if (!mounted) return;
                                 if (isMovieWatchlist == null) {
                                   return;
                                 }
@@ -488,6 +489,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                             right: 30,
                             child: GestureDetector(
                               onTap: () async {
+                                if (!mounted) return;
                                 if (isMovieFavorite == null) {
                                   return;
                                 }
@@ -568,6 +570,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                               color: Colors.amber,
                                             ),
                                             onRatingUpdate: (rating) async {
+                                              if (!mounted) return;
                                               final movieId = widget.movieId;
                                               final openbox =
                                                   await Hive.openBox(
@@ -590,6 +593,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                         ),
                                         GestureDetector(
                                           onTap: () async {
+                                            if (!mounted) return;
                                             final openbox = await Hive.openBox(
                                                 'sessionBox');
 
@@ -670,6 +674,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                                   color: Colors.amber,
                                                 ),
                                                 onRatingUpdate: (rating) async {
+                                                  if (!mounted) return;
                                                   final movieId =
                                                       widget.movieId;
                                                   final openbox =

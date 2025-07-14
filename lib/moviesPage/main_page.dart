@@ -12,22 +12,22 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
-import 'package:Mirarr/moviesPage/UI/customMovieWidget.dart';
+import 'package:Mirarr/moviesPage/UI/custom_movie_widget.dart';
 import 'package:Mirarr/moviesPage/models/movie.dart';
 import 'package:Mirarr/widgets/bottom_bar.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
 
 class MovieSearchScreen extends StatefulWidget {
-  static final GlobalKey<_MovieSearchScreenState> movieSearchKey =
-      GlobalKey<_MovieSearchScreenState>();
+  static final GlobalKey<MovieSearchScreenState> movieSearchKey =
+      GlobalKey<MovieSearchScreenState>();
 
   const MovieSearchScreen({super.key});
   @override
-  _MovieSearchScreenState createState() => _MovieSearchScreenState();
+  MovieSearchScreenState createState() => MovieSearchScreenState();
 }
 
-class _MovieSearchScreenState extends State<MovieSearchScreen> {
+class MovieSearchScreenState extends State<MovieSearchScreen> {
   final apiKey = dotenv.env['TMDB_API_KEY'];
 
   List<Movie> trendingMovies = [];

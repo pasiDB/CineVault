@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:Mirarr/widgets/cast/cast-details.dart';
-import 'package:Mirarr/widgets/cast/crew-details.dart';
+import 'package:Mirarr/widgets/cast/cast_details.dart';
+import 'package:Mirarr/widgets/cast/crew_details.dart';
 import 'package:provider/provider.dart';
 import 'package:Mirarr/functions/regionprovider_class.dart';
 import 'package:Mirarr/functions/get_base_url.dart';

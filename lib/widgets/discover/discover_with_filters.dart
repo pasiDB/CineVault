@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:Mirarr/functions/get_base_url.dart';
 import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/moviesPage/UI/customMovieWidget.dart';
+import 'package:Mirarr/moviesPage/UI/custom_movie_widget.dart';
 import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
 import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
 import 'package:Mirarr/moviesPage/models/movie.dart';

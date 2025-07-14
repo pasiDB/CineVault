@@ -91,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _signup() async {
+    if (!mounted) return;
     final url = Uri.parse('https://www.themoviedb.org/signup');
 
     try {
@@ -101,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _forgotpassword() async {
+    if (!mounted) return;
     final url = Uri.parse('https://www.themoviedb.org/reset-password');
 
     try {
@@ -117,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => ProfilePage()),
+      MaterialPageRoute(builder: (context) => const ProfilePage()),
     );
   }
 

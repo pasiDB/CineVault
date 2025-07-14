@@ -1,4 +1,4 @@
-import 'package:Mirarr/moviesPage/movieDetailPage.dart';
+import 'package:Mirarr/moviesPage/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 
 void onTapMovie(String movieTitle, int movieId, BuildContext context) {

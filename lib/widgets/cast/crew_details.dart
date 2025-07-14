@@ -19,14 +19,14 @@ class CrewDetailPage extends StatefulWidget {
   final int castId;
 
   @override
-  _CrewDetailPageState createState() => _CrewDetailPageState();
+  CrewDetailPageState createState() => CrewDetailPageState();
 }
 
 bool _showIcon = true;
 final apiKey = dotenv.env['TMDB_API_KEY'];
 const baseUrl = 'https://tmdb.maybeparsa.top/tmdb';
 
-class _CrewDetailPageState extends State<CrewDetailPage> {
+class CrewDetailPageState extends State<CrewDetailPage> {
   late Future<Map<String, dynamic>> _castDetailsFuture;
   late Future<List<String>> _castImagesFuture;
   late Future<List<dynamic>> _otherMoviesFuture;
