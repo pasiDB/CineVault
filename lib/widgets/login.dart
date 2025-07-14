@@ -43,13 +43,15 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var requestToken =
           await tmdb.v3.auth.createSessionWithLogin(email, password) as String?;
+      if (!mounted) return;
       if (requestToken != null) {
         // Step 4: Create session
         var sessionData = await tmdb.v3.auth.createSession(requestToken);
-
+        if (!mounted) return;
         if (sessionData != null) {
           var accountData = await http.get(Uri.parse(
               'https://api.themoviedb.org/3/account?api_key=$apiKey&session_id=$sessionData'));
+          if (!mounted) return;
           if (accountData.statusCode == 200) {
             final String accountId =
                 json.decode(accountData.body)['id'].toString();
@@ -68,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
             'Failed to login. Please check your credentials.', context);
       }
     } catch (e) {
+      if (!mounted) return;
       if (e.toString().contains('401')) {
         showErrorDialog('Error',
             'Invalid username or password. Please try again.', context);
@@ -76,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
             'An unexpected error occurred. Please try again later.', context);
       }
     } finally {
+      if (!mounted) return;
       setState(() {
         _isLoading = false;
       });
@@ -96,7 +100,9 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await _launchUrl(url);
+      if (!mounted) return;
     } catch (e) {
+      if (!mounted) return;
       showErrorDialog('Error', 'Failed to launch URL', context);
     }
   }
@@ -107,7 +113,9 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await _launchUrl(url);
+      if (!mounted) return;
     } catch (e) {
+      if (!mounted) return;
       showErrorDialog('Error', 'Failed to launch URL', context);
     }
   }

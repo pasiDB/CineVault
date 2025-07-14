@@ -21,6 +21,7 @@ import 'package:Mirarr/widgets/custom_divider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:Mirarr/functions/show_error_dialog.dart';
 
 class SerieDetailPage extends StatefulWidget {
   final String serieName;
@@ -96,7 +97,7 @@ class SerieDetailPageState extends State<SerieDetailPage> {
       Uri.parse(
           '${baseUrl}tv/${widget.serieId}/account_states?api_key=$apiKey&session_id=$sessionId'),
     );
-
+    if (!mounted) return;
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       setState(() {
@@ -112,10 +113,10 @@ class SerieDetailPageState extends State<SerieDetailPage> {
 
   Future<void> _fetchSerieDetails() async {
     try {
-      // Make an HTTP GET request to fetch movie details from the first API
       final region =
           Provider.of<RegionProvider>(context, listen: false).currentRegion;
       final responseData = await fetchSerieDetails(widget.serieId, region);
+      if (!mounted) return;
       setState(() {
         serieDetails = responseData;
         budget = responseData['budget'];
@@ -148,7 +149,6 @@ class SerieDetailPageState extends State<SerieDetailPage> {
 
   Future<void> fetchExternalId() async {
     try {
-      // Make an HTTP GET request to fetch movie details from the first API
       final region =
           Provider.of<RegionProvider>(context, listen: false).currentRegion;
       final baseUrl = getBaseUrl(region);
@@ -156,7 +156,7 @@ class SerieDetailPageState extends State<SerieDetailPage> {
         Uri.parse(
             '${baseUrl}tv/${widget.serieId}/external_ids?api_key=$apiKey'),
       );
-
+      if (!mounted) return;
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
         setState(() {
@@ -166,6 +166,7 @@ class SerieDetailPageState extends State<SerieDetailPage> {
         if (imdbId != null) {
           await getSerieRatings(
               imdbId, updateImdbRating, updateRottenTomatoesRating);
+          if (!mounted) return;
         }
       } else {
         throw Exception('Failed to load serie details');
@@ -426,25 +427,31 @@ class SerieDetailPageState extends State<SerieDetailPage> {
                               if (isSerieWatchlist == null) {
                                 return;
                               }
-                              final movieId = widget.serieId;
+                              final serieId = widget.serieId;
                               final openbox = await Hive.openBox('sessionBox');
                               final String accountId = openbox.get('accountId');
                               final String sessionData =
                                   openbox.get('sessionData');
                               if (isSerieWatchlist!) {
-                                // Remove from watchlist
-                                removeFromWatchList(
-                                    accountId, sessionData, movieId, context);
-                                setState(() {
-                                  isSerieWatchlist = false;
-                                });
+                                final error = await removeFromWatchList(
+                                    accountId, sessionData, serieId);
+                                if (error != null && mounted) {
+                                  showErrorDialog('Error', error, context);
+                                } else {
+                                  setState(() {
+                                    isSerieWatchlist = false;
+                                  });
+                                }
                               } else {
-                                // Add to watchlist
-                                addWatchList(
-                                    accountId, sessionData, movieId, context);
-                                setState(() {
-                                  isSerieWatchlist = true;
-                                });
+                                final error = await addWatchList(
+                                    accountId, sessionData, serieId);
+                                if (error != null && mounted) {
+                                  showErrorDialog('Error', error, context);
+                                } else {
+                                  setState(() {
+                                    isSerieWatchlist = true;
+                                  });
+                                }
                               }
                             },
                             child: Icon(
@@ -470,23 +477,31 @@ class SerieDetailPageState extends State<SerieDetailPage> {
                               if (isSerieFavorite == null) {
                                 return;
                               }
-                              final movieId = widget.serieId;
+                              final serieId = widget.serieId;
                               final openbox = await Hive.openBox('sessionBox');
                               final String accountId = openbox.get('accountId');
                               final String sessionData =
                                   openbox.get('sessionData');
                               if (isSerieFavorite!) {
-                                removeFromFavorite(
-                                    accountId, sessionData, movieId, context);
-                                setState(() {
-                                  isSerieFavorite = false;
-                                });
+                                final error = await removeFromFavorite(
+                                    accountId, sessionData, serieId);
+                                if (error != null && mounted) {
+                                  showErrorDialog('Error', error, context);
+                                } else {
+                                  setState(() {
+                                    isSerieFavorite = false;
+                                  });
+                                }
                               } else {
-                                addFavorite(
-                                    accountId, sessionData, movieId, context);
-                                setState(() {
-                                  isSerieFavorite = true;
-                                });
+                                final error = await addFavorite(
+                                    accountId, sessionData, serieId);
+                                if (error != null && mounted) {
+                                  showErrorDialog('Error', error, context);
+                                } else {
+                                  setState(() {
+                                    isSerieFavorite = true;
+                                  });
+                                }
                               }
                             },
                             child: Icon(
@@ -552,12 +567,17 @@ class SerieDetailPageState extends State<SerieDetailPage> {
 
                                             final String sessionData =
                                                 openbox.get('sessionData');
-                                            addRating(sessionData, movieId,
-                                                rating, context);
-                                            setState(() {
-                                              isSerieRated != false;
-                                              userRating = rating;
-                                            });
+                                            final error = await addRating(
+                                                sessionData, movieId, rating);
+                                            if (error != null && mounted) {
+                                              showErrorDialog(
+                                                  'Error', error, context);
+                                            } else {
+                                              setState(() {
+                                                isSerieRated != false;
+                                                userRating = rating;
+                                              });
+                                            }
                                           },
                                         ),
                                       ),
@@ -573,13 +593,18 @@ class SerieDetailPageState extends State<SerieDetailPage> {
 
                                           final String sessionData =
                                               openbox.get('sessionData');
-                                          removeRating(sessionData,
-                                              widget.serieId, context);
-                                          Navigator.of(context).pop();
-                                          setState(() {
-                                            isSerieRated = false;
-                                            userRating = null;
-                                          });
+                                          final error = await removeRating(
+                                              sessionData, widget.serieId);
+                                          if (error != null && mounted) {
+                                            showErrorDialog(
+                                                'Error', error, context);
+                                          } else {
+                                            Navigator.of(context).pop();
+                                            setState(() {
+                                              isSerieRated = false;
+                                              userRating = null;
+                                            });
+                                          }
                                         },
                                         child: const Text(
                                           ' 🗑️ Delete Rating',
@@ -656,13 +681,20 @@ class SerieDetailPageState extends State<SerieDetailPage> {
 
                                                 final String sessionData =
                                                     openbox.get('sessionData');
-                                                addRating(sessionData, movieId,
-                                                    rating, context);
-                                                setState(() {
-                                                  isSerieRated =
-                                                      '"value":$rating';
-                                                  userRating = rating;
-                                                });
+                                                final error = await addRating(
+                                                    sessionData,
+                                                    movieId,
+                                                    rating);
+                                                if (error != null && mounted) {
+                                                  showErrorDialog(
+                                                      'Error', error, context);
+                                                } else {
+                                                  setState(() {
+                                                    isSerieRated =
+                                                        '"value":$rating';
+                                                    userRating = rating;
+                                                  });
+                                                }
                                               },
                                             ),
                                             const SizedBox(

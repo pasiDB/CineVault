@@ -26,6 +26,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:Mirarr/functions/show_error_dialog.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String movieTitle;
@@ -118,7 +119,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
         '${baseUrl}movie/${widget.movieId}/account_states?api_key=$apiKey&session_id=$sessionId',
       ),
     );
-
+    if (!mounted) return;
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       setState(() {
@@ -164,6 +165,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
       final region =
           Provider.of<RegionProvider>(context, listen: false).currentRegion;
       final responseData = await fetchMovieDetails(widget.movieId, region);
+      if (!mounted) return;
       setState(() {
         moviedetails = responseData;
         budget = responseData['budget'];
@@ -183,6 +185,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
       if (imdbId != null) {
         await getMovieRatings(
             imdbId, updateImdbRating, updateRottenTomatoesRating);
+        if (!mounted) return;
       }
     } catch (e) {
       throw Exception('Failed to load movie details');
@@ -456,18 +459,26 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                                     openbox.get('sessionData');
                                 if (isMovieWatchlist!) {
                                   // Remove from watchlist
-                                  removeFromWatchList(
-                                      accountId, sessionData, movieId, context);
-                                  setState(() {
-                                    isMovieWatchlist = false;
-                                  });
+                                  final error = await removeFromWatchList(
+                                      accountId, sessionData, movieId);
+                                  if (error != null && context.mounted) {
+                                    showErrorDialog('Error', error, context);
+                                  } else {
+                                    setState(() {
+                                      isMovieWatchlist = false;
+                                    });
+                                  }
                                 } else {
                                   // Add to watchlist
-                                  addWatchList(
-                                      accountId, sessionData, movieId, context);
-                                  setState(() {
-                                    isMovieWatchlist = true;
-                                  });
+                                  final error = await addWatchList(
+                                      accountId, sessionData, movieId);
+                                  if (error != null && context.mounted) {
+                                    showErrorDialog('Error', error, context);
+                                  } else {
+                                    setState(() {
+                                      isMovieWatchlist = true;
+                                    });
+                                  }
                                 }
                               },
                               child: Icon(
@@ -501,17 +512,25 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                                 final String sessionData =
                                     openbox.get('sessionData');
                                 if (isMovieFavorite!) {
-                                  removeFromFavorite(
-                                      accountId, sessionData, movieId, context);
-                                  setState(() {
-                                    isMovieFavorite = false;
-                                  });
+                                  final error = await removeFromFavorite(
+                                      accountId, sessionData, movieId);
+                                  if (error != null && context.mounted) {
+                                    showErrorDialog('Error', error, context);
+                                  } else {
+                                    setState(() {
+                                      isMovieFavorite = false;
+                                    });
+                                  }
                                 } else {
-                                  addFavorite(
-                                      accountId, sessionData, movieId, context);
-                                  setState(() {
-                                    isMovieFavorite = true;
-                                  });
+                                  final error = await addFavorite(
+                                      accountId, sessionData, movieId);
+                                  if (error != null && context.mounted) {
+                                    showErrorDialog('Error', error, context);
+                                  } else {
+                                    setState(() {
+                                      isMovieFavorite = true;
+                                    });
+                                  }
                                 }
                               },
                               child: Icon(
@@ -578,12 +597,18 @@ class MovieDetailPageState extends State<MovieDetailPage> {
 
                                               final String sessionData =
                                                   openbox.get('sessionData');
-                                              addRating(sessionData, movieId,
-                                                  rating, context);
-                                              setState(() {
-                                                isMovieRated != false;
-                                                userRating = rating;
-                                              });
+                                              final error = await addRating(
+                                                  sessionData, movieId, rating);
+                                              if (error != null &&
+                                                  context.mounted) {
+                                                showErrorDialog(
+                                                    'Error', error, context);
+                                              } else {
+                                                setState(() {
+                                                  isMovieRated != false;
+                                                  userRating = rating;
+                                                });
+                                              }
                                             },
                                           ),
                                         ),
@@ -599,13 +624,19 @@ class MovieDetailPageState extends State<MovieDetailPage> {
 
                                             final String sessionData =
                                                 openbox.get('sessionData');
-                                            removeRating(sessionData,
-                                                widget.movieId, context);
-                                            Navigator.of(context).pop();
-                                            setState(() {
-                                              isMovieRated = false;
-                                              userRating = null;
-                                            });
+                                            final error = await removeRating(
+                                                sessionData, widget.movieId);
+                                            if (error != null &&
+                                                context.mounted) {
+                                              showErrorDialog(
+                                                  'Error', error, context);
+                                            } else {
+                                              Navigator.of(context).pop();
+                                              setState(() {
+                                                isMovieRated = false;
+                                                userRating = null;
+                                              });
+                                            }
                                           },
                                           child: const Text(
                                             ' 🗑️ Delete Rating',
@@ -684,13 +715,21 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                                                   final String sessionData =
                                                       openbox
                                                           .get('sessionData');
-                                                  addRating(sessionData,
-                                                      movieId, rating, context);
-                                                  setState(() {
-                                                    isMovieRated =
-                                                        '"value":$rating';
-                                                    userRating = rating;
-                                                  });
+                                                  final error = await addRating(
+                                                      sessionData,
+                                                      movieId,
+                                                      rating);
+                                                  if (error != null &&
+                                                      context.mounted) {
+                                                    showErrorDialog('Error',
+                                                        error, context);
+                                                  } else {
+                                                    setState(() {
+                                                      isMovieRated =
+                                                          '"value":$rating';
+                                                      userRating = rating;
+                                                    });
+                                                  }
                                                 },
                                               ),
                                               const SizedBox(

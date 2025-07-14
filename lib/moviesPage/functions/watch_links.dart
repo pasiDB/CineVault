@@ -39,7 +39,7 @@ Future<Map<String, Map<String, dynamic>>> fetchSources() async {
 // Function to show watch options in a modal bottom sheet
 void showWatchOptions(BuildContext context, int movieId, String movieTitle,
     String releaseDate, String imdbId) async {
-  // Fetch sources dynamically
+  // Fetch sources before using context in showModalBottomSheet
   Map<String, Map<String, dynamic>> optionUrls = await fetchSources();
 
   // Replace hardcoded URLs with dynamic ones
@@ -51,6 +51,7 @@ void showWatchOptions(BuildContext context, int movieId, String movieTitle,
 
   List<String> options = optionUrls.keys.toList();
 
+  // Now use context only inside the builder
   showModalBottomSheet(
     context: context,
     builder: (BuildContext bottomSheetContext) {
@@ -65,47 +66,13 @@ void showWatchOptions(BuildContext context, int movieId, String movieTitle,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Watch or Download',
+                  'Watch from below sources or download the movie.',
                   style: TextStyle(color: mainColor, fontSize: 12),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () => _launchUrl(Uri.parse(
-                          'https://dl.vidsrc.vip/movie/${movieId.toString()}')),
-                      icon: Icon(Icons.download, color: mainColor),
-                    ),
-                    if (region == 'iran')
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () => _launchUrl(Uri.parse(
-                                'https://berlin.saymyname.website/Movies/$year/${movieId.toString()}')),
-                            icon: Icon(Icons.download, color: mainColor),
-                          ),
-                          Text(
-                            '🇮🇷',
-                            style: TextStyle(
-                              color: mainColor,
-                              fontSize: 10,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () => _launchUrl(Uri.parse(
-                                'https://tokyo.saymyname.website/Movies/$year/${movieId.toString()}')),
-                            icon: Icon(Icons.download, color: mainColor),
-                          ),
-                          Text(
-                            '🇮🇷',
-                            style: TextStyle(
-                              color: mainColor,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
-                      ),
-                  ],
+                IconButton(
+                  onPressed: () => _launchUrl(Uri.parse(
+                      'https://dl.vidsrc.vip/movie/${movieId.toString()}')),
+                  icon: Icon(Icons.download, color: mainColor),
                 ),
               ],
             ),

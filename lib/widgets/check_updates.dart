@@ -8,7 +8,9 @@ class UpdateChecker {
   static Future<void> checkForUpdate(BuildContext context) async {
     if (!context.mounted) return;
     final currentVersion = await _getCurrentVersion();
+    if (!context.mounted) return;
     final latestVersion = await _getLatestVersion();
+    if (!context.mounted) return;
 
     if (latestVersion != null &&
         _isNewerVersion(currentVersion, latestVersion)) {

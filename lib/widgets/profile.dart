@@ -71,7 +71,7 @@ class ProfilePageState extends State<ProfilePage> {
         '${baseUrl}account/$accountId/watchlist/movies?api_key=$apiKey&session_id=$sessionData',
       ),
     );
-
+    if (!mounted) return;
     if (response.statusCode == 200) {
       final List<Movie> movies = [];
       final List<dynamic> results = json.decode(response.body)['results'];

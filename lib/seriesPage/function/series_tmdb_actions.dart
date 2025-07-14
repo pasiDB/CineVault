@@ -1,15 +1,13 @@
 import 'dart:convert';
-import 'package:Mirarr/functions/show_error_dialog.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:hive/hive.dart';
 
 final apiKey = dotenv.env['TMDB_API_KEY'];
-Future<void> addRating(String sessionId, int serieId, double userScore,
-    BuildContext context) async {
+Future<String?> addRating(
+    String sessionId, int serieId, double userScore) async {
   final openbox = await Hive.openBox('sessionBox');
   final String sessionData = openbox.get('sessionData');
   const String baseUrl = 'https://tmdb.maybeparsa.top/tmdb';
@@ -34,16 +32,16 @@ Future<void> addRating(String sessionId, int serieId, double userScore,
       if (kDebugMode) {
         debugPrint('Rating added for $serieId successfully!');
       }
+      return null;
     } else {
-      showErrorDialog('Error', 'Failed to add rating for $serieId', context);
+      return 'Failed to add rating for $serieId';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }
 
-Future<void> removeRating(
-    String sessionId, int serieId, BuildContext context) async {
+Future<String?> removeRating(String sessionId, int serieId) async {
   final openbox = await Hive.openBox('sessionBox');
   final String sessionData = openbox.get('sessionData');
   const String baseUrl = 'https://tmdb.maybeparsa.top/tmdb';
@@ -63,16 +61,17 @@ Future<void> removeRating(
       if (kDebugMode) {
         debugPrint('Rating removed for $serieId successfully!');
       }
+      return null;
     } else {
-      showErrorDialog('Error', 'Failed to remove rating for $serieId', context);
+      return 'Failed to remove rating for $serieId';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }
 
-Future<void> addWatchList(String accountId, String sessionId, int serieId,
-    BuildContext context) async {
+Future<String?> addWatchList(
+    String accountId, String sessionId, int serieId) async {
   final openbox = await Hive.openBox('sessionBox');
   final String accountId = openbox.get('accountId');
   final String sessionData = openbox.get('sessionData');
@@ -100,16 +99,17 @@ Future<void> addWatchList(String accountId, String sessionId, int serieId,
       if (kDebugMode) {
         debugPrint('Serie added to watchlist successfully!');
       }
+      return null;
     } else {
-      showErrorDialog('Error', 'Failed to add serie to watchlist', context);
+      return 'Failed to add serie to watchlist';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }
 
-Future<void> addFavorite(String accountId, String sessionId, int serieId,
-    BuildContext context) async {
+Future<String?> addFavorite(
+    String accountId, String sessionId, int serieId) async {
   final openbox = await Hive.openBox('sessionBox');
   final String accountId = openbox.get('accountId');
   final String sessionData = openbox.get('sessionData');
@@ -137,16 +137,17 @@ Future<void> addFavorite(String accountId, String sessionId, int serieId,
       if (kDebugMode) {
         debugPrint('Serie added to favorites successfully!');
       }
+      return null;
     } else {
-      showErrorDialog('Error', 'Failed to add serie to favorites', context);
+      return 'Failed to add serie to favorites';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }
 
-Future<void> removeFromWatchList(String accountId, String sessionId,
-    int serieId, BuildContext context) async {
+Future<String?> removeFromWatchList(
+    String accountId, String sessionId, int serieId) async {
   final openbox = await Hive.openBox('sessionBox');
   final String accountId = openbox.get('accountId');
   final String sessionData = openbox.get('sessionData');
@@ -174,17 +175,17 @@ Future<void> removeFromWatchList(String accountId, String sessionId,
       if (kDebugMode) {
         debugPrint('Serie removed from watchlist successfully!');
       }
+      return null;
     } else {
-      showErrorDialog(
-          'Error', 'Failed to remove serie from watchlist', context);
+      return 'Failed to remove serie from watchlist';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }
 
-Future<void> removeFromFavorite(String accountId, String sessionId, int serieId,
-    BuildContext context) async {
+Future<String?> removeFromFavorite(
+    String accountId, String sessionId, int serieId) async {
   final openbox = await Hive.openBox('sessionBox');
   final String accountId = openbox.get('accountId');
   final String sessionData = openbox.get('sessionData');
@@ -212,11 +213,11 @@ Future<void> removeFromFavorite(String accountId, String sessionId, int serieId,
       if (kDebugMode) {
         debugPrint('Serie removed from favorites successfully!');
       }
+      return null;
     } else {
-      showErrorDialog(
-          'Error', 'Failed to remove serie from favorites', context);
+      return 'Failed to remove serie from favorites';
     }
   } catch (error) {
-    showErrorDialog('Error', error.toString(), context);
+    return error.toString();
   }
 }

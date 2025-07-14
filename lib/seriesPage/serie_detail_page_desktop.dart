@@ -21,6 +21,7 @@ import 'package:Mirarr/moviesPage/UI/cast_crew_row.dart';
 import 'package:Mirarr/widgets/bottom_bar.dart';
 import 'package:Mirarr/widgets/custom_divider.dart';
 import 'package:provider/provider.dart';
+import 'package:Mirarr/functions/show_error_dialog.dart';
 
 class SerieDetailPageDesktop extends StatefulWidget {
   final String serieName;
@@ -96,7 +97,7 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
         '${baseUrl}tv/${widget.serieId}/account_states?api_key=$apiKey&session_id=$sessionId',
       ),
     );
-
+    if (!mounted) return;
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       setState(() {
@@ -115,6 +116,7 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
       final region =
           Provider.of<RegionProvider>(context, listen: false).currentRegion;
       final responseData = await fetchSerieDetails(widget.serieId, region);
+      if (!mounted) return;
       setState(() {
         serieDetails = responseData;
         budget = responseData['budget'];
@@ -151,12 +153,11 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
       final region =
           Provider.of<RegionProvider>(context, listen: false).currentRegion;
       final baseUrl = getBaseUrl(region);
-      // Make an HTTP GET request to fetch movie details from the first API
       final response = await http.get(
         Uri.parse(
             '${baseUrl}tv/${widget.serieId}/external_ids?api_key=$apiKey'),
       );
-
+      if (!mounted) return;
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
         setState(() {
@@ -166,14 +167,13 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
         if (imdbId != null) {
           await getSerieRatings(
               imdbId, updateImdbRating, updateRottenTomatoesRating);
+          if (!mounted) return;
         }
       } else {
         throw Exception('Failed to load serie details');
       }
     } catch (e) {
-      if (kDebugMode) {
-        debugPrint('Error: $e');
-      }
+      throw Exception('Failed to load external Id');
     }
   }
 
@@ -296,25 +296,34 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                             final String sessionData =
                                                 openbox.get('sessionData');
                                             if (isSerieWatchlist!) {
-                                              // Remove from watchlist
-                                              removeFromWatchList(
-                                                  accountId,
-                                                  sessionData,
-                                                  serieId,
-                                                  context);
-                                              setState(() {
-                                                isSerieWatchlist = false;
-                                              });
+                                              final error =
+                                                  await removeFromWatchList(
+                                                      accountId,
+                                                      sessionData,
+                                                      serieId);
+                                              if (error != null &&
+                                                  context.mounted) {
+                                                showErrorDialog(
+                                                    'Error', error, context);
+                                              } else {
+                                                setState(() {
+                                                  isSerieWatchlist = false;
+                                                });
+                                              }
                                             } else {
-                                              // Add to watchlist
-                                              addWatchList(
+                                              final error = await addWatchList(
                                                   accountId,
                                                   sessionData,
-                                                  serieId,
-                                                  context);
-                                              setState(() {
-                                                isSerieWatchlist = true;
-                                              });
+                                                  serieId);
+                                              if (error != null &&
+                                                  context.mounted) {
+                                                showErrorDialog(
+                                                    'Error', error, context);
+                                              } else {
+                                                setState(() {
+                                                  isSerieWatchlist = true;
+                                                });
+                                              }
                                             }
                                           },
                                           child: Icon(
@@ -344,23 +353,34 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                             final String sessionData =
                                                 openbox.get('sessionData');
                                             if (isSerieFavorite!) {
-                                              removeFromFavorite(
-                                                  accountId,
-                                                  sessionData,
-                                                  serieId,
-                                                  context);
-                                              setState(() {
-                                                isSerieFavorite = false;
-                                              });
+                                              final error =
+                                                  await removeFromFavorite(
+                                                      accountId,
+                                                      sessionData,
+                                                      serieId);
+                                              if (error != null &&
+                                                  context.mounted) {
+                                                showErrorDialog(
+                                                    'Error', error, context);
+                                              } else {
+                                                setState(() {
+                                                  isSerieFavorite = false;
+                                                });
+                                              }
                                             } else {
-                                              addFavorite(
+                                              final error = await addFavorite(
                                                   accountId,
                                                   sessionData,
-                                                  serieId,
-                                                  context);
-                                              setState(() {
-                                                isSerieFavorite = true;
-                                              });
+                                                  serieId);
+                                              if (error != null &&
+                                                  context.mounted) {
+                                                showErrorDialog(
+                                                    'Error', error, context);
+                                              } else {
+                                                setState(() {
+                                                  isSerieFavorite = true;
+                                                });
+                                              }
                                             }
                                           },
                                           child: Icon(
@@ -430,21 +450,29 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                           final openbox =
                                                               await Hive.openBox(
                                                                   'sessionBox');
-
                                                           final String
                                                               sessionData =
                                                               openbox.get(
                                                                   'sessionData');
-                                                          addRating(
-                                                              sessionData,
-                                                              serieId,
-                                                              rating,
-                                                              context);
-                                                          setState(() {
-                                                            isSerieRated !=
-                                                                false;
-                                                            userRating = rating;
-                                                          });
+                                                          final error =
+                                                              await addRating(
+                                                                  sessionData,
+                                                                  serieId,
+                                                                  rating);
+                                                          if (error != null &&
+                                                              context.mounted) {
+                                                            showErrorDialog(
+                                                                'Error',
+                                                                error,
+                                                                context);
+                                                          } else {
+                                                            setState(() {
+                                                              isSerieRated !=
+                                                                  false;
+                                                              userRating =
+                                                                  rating;
+                                                            });
+                                                          }
                                                         },
                                                       ),
                                                     ),
@@ -458,21 +486,29 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                         final openbox =
                                                             await Hive.openBox(
                                                                 'sessionBox');
-
                                                         final String
                                                             sessionData =
                                                             openbox.get(
                                                                 'sessionData');
-                                                        removeRating(
-                                                            sessionData,
-                                                            widget.serieId,
-                                                            context);
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                        setState(() {
-                                                          isSerieRated = false;
-                                                          userRating = null;
-                                                        });
+                                                        final error =
+                                                            await removeRating(
+                                                                sessionData,
+                                                                widget.serieId);
+                                                        if (error != null &&
+                                                            context.mounted) {
+                                                          showErrorDialog(
+                                                              'Error',
+                                                              error,
+                                                              context);
+                                                        } else {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                          setState(() {
+                                                            isSerieRated =
+                                                                false;
+                                                            userRating = null;
+                                                          });
+                                                        }
                                                       },
                                                       child: const Text(
                                                         ' 🗑️ Delete Rating',
@@ -562,17 +598,27 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                                   sessionData =
                                                                   openbox.get(
                                                                       'sessionData');
-                                                              addRating(
-                                                                  sessionData,
-                                                                  serieId,
-                                                                  rating,
-                                                                  context);
-                                                              setState(() {
-                                                                isSerieRated =
-                                                                    '"value":$rating';
-                                                                userRating =
-                                                                    rating;
-                                                              });
+                                                              final error =
+                                                                  await addRating(
+                                                                      sessionData,
+                                                                      serieId,
+                                                                      rating);
+                                                              if (error !=
+                                                                      null &&
+                                                                  context
+                                                                      .mounted) {
+                                                                showErrorDialog(
+                                                                    'Error',
+                                                                    error,
+                                                                    context);
+                                                              } else {
+                                                                setState(() {
+                                                                  isSerieRated =
+                                                                      '"value":$rating';
+                                                                  userRating =
+                                                                      rating;
+                                                                });
+                                                              }
                                                             },
                                                           ),
                                                           const SizedBox(
