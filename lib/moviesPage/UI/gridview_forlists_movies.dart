@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/moviesPage/UI/custom_movie_widget.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
+import 'package:mirarr/moviesPage/UI/custom_movie_widget.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
 import 'package:flutter/material.dart';
 
 class ListGridViewMovies extends StatefulWidget {

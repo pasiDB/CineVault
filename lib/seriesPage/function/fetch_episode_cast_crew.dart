@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:Mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/get_base_url.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;

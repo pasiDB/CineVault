@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Mirarr/seriesPage/checkers/const_tmdb_ids_series.dart';
+import 'package:mirarr/seriesPage/checkers/const_tmdb_ids_series.dart';
 
 bool isBreakingBad(int tmdbId) => breakingbadId.contains(tmdbId);
 

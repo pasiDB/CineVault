@@ -1,4 +1,4 @@
-import 'package:Mirarr/seriesPage/serie_detail_page_desktop.dart';
+import 'package:mirarr/seriesPage/serie_detail_page_desktop.dart';
 import 'package:flutter/material.dart';
 
 void onTapSerieDesktop(String serieName, int serieId, BuildContext context) {

@@ -1,6 +1,6 @@
-import 'package:Mirarr/functions/show_error_dialog.dart';
-import 'package:Mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/functions/show_error_dialog.dart';
+import 'package:mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:http/http.dart' as http;

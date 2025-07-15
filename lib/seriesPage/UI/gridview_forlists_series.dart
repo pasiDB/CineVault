@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/seriesPage/UI/custom_series_widget.dart';
-import 'package:Mirarr/seriesPage/function/on_tap_serie.dart';
-import 'package:Mirarr/seriesPage/function/on_tap_serie_desktop.dart';
+import 'package:mirarr/seriesPage/UI/custom_series_widget.dart';
+import 'package:mirarr/seriesPage/function/on_tap_serie.dart';
+import 'package:mirarr/seriesPage/function/on_tap_serie_desktop.dart';
 import 'package:flutter/material.dart';
 
 class ListGridViewSeries extends StatefulWidget {

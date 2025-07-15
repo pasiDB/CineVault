@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
-import 'package:Mirarr/widgets/image_gallery_page.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/widgets/image_gallery_page.dart';
 import 'package:provider/provider.dart';
 
 class CrewDetailPage extends StatefulWidget {

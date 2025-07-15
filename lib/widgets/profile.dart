@@ -4,28 +4,28 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_gridview_movie.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
-import 'package:Mirarr/seriesPage/function/on_tap_gridview_serie.dart';
-import 'package:Mirarr/seriesPage/function/on_tap_serie.dart';
-import 'package:Mirarr/seriesPage/function/on_tap_serie_desktop.dart';
-import 'package:Mirarr/widgets/settings_screen.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_gridview_movie.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
+import 'package:mirarr/seriesPage/function/on_tap_gridview_serie.dart';
+import 'package:mirarr/seriesPage/function/on_tap_serie.dart';
+import 'package:mirarr/seriesPage/function/on_tap_serie_desktop.dart';
+import 'package:mirarr/widgets/settings_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
-import 'package:Mirarr/moviesPage/UI/custom_movie_widget.dart';
-import 'package:Mirarr/seriesPage/UI/custom_series_widget.dart';
-import 'package:Mirarr/seriesPage/models/serie.dart';
-import 'package:Mirarr/widgets/bottom_bar.dart';
-import 'package:Mirarr/widgets/login.dart';
+import 'package:mirarr/moviesPage/UI/custom_movie_widget.dart';
+import 'package:mirarr/seriesPage/UI/custom_series_widget.dart';
+import 'package:mirarr/seriesPage/models/serie.dart';
+import 'package:mirarr/widgets/bottom_bar.dart';
+import 'package:mirarr/widgets/login.dart';
 import 'package:http/http.dart' as http;
-import 'package:Mirarr/moviesPage/models/movie.dart';
+import 'package:mirarr/moviesPage/models/movie.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {

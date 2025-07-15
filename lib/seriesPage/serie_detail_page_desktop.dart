@@ -3,14 +3,14 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/functions/fetchers/fetch_serie_details.dart';
-import 'package:Mirarr/functions/fetchers/fetch_series_credits.dart';
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/seriesPage/UI/seasons_details.dart';
-import 'package:Mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
-import 'package:Mirarr/seriesPage/function/get_imdb_rating_series.dart';
-import 'package:Mirarr/seriesPage/function/series_tmdb_actions.dart';
+import 'package:mirarr/functions/fetchers/fetch_serie_details.dart';
+import 'package:mirarr/functions/fetchers/fetch_series_credits.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/seriesPage/UI/seasons_details.dart';
+import 'package:mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
+import 'package:mirarr/seriesPage/function/get_imdb_rating_series.dart';
+import 'package:mirarr/seriesPage/function/series_tmdb_actions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,11 +19,11 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:Mirarr/moviesPage/UI/cast_crew_row.dart';
-import 'package:Mirarr/widgets/bottom_bar.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/moviesPage/UI/cast_crew_row.dart';
+import 'package:mirarr/widgets/bottom_bar.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
 import 'package:provider/provider.dart';
-import 'package:Mirarr/functions/show_error_dialog.dart';
+import 'package:mirarr/functions/show_error_dialog.dart';
 
 class SerieDetailPageDesktop extends StatefulWidget {
   final String serieName;

@@ -2,17 +2,17 @@
 
 import 'dart:io';
 
-import 'package:Mirarr/functions/fetchers/fetch_movie_credits.dart';
-import 'package:Mirarr/functions/fetchers/fetch_movie_details.dart';
-import 'package:Mirarr/functions/fetchers/fetch_other_movies_by_director.dart';
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/functions/share_content.dart';
-import 'package:Mirarr/moviesPage/checkers/custom_tmdb_ids_effects.dart';
-import 'package:Mirarr/moviesPage/functions/get_imdb_rating.dart';
-import 'package:Mirarr/moviesPage/functions/movie_tmdb_actions.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie.dart';
-import 'package:Mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
+import 'package:mirarr/functions/fetchers/fetch_movie_credits.dart';
+import 'package:mirarr/functions/fetchers/fetch_movie_details.dart';
+import 'package:mirarr/functions/fetchers/fetch_other_movies_by_director.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/functions/share_content.dart';
+import 'package:mirarr/moviesPage/checkers/custom_tmdb_ids_effects.dart';
+import 'package:mirarr/moviesPage/functions/get_imdb_rating.dart';
+import 'package:mirarr/moviesPage/functions/movie_tmdb_actions.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie.dart';
+import 'package:mirarr/moviesPage/functions/on_tap_movie_desktop.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -20,15 +20,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
-import 'package:Mirarr/moviesPage/UI/cast_crew_row.dart';
-import 'package:Mirarr/widgets/bottom_bar.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
-import 'package:Mirarr/widgets/image_gallery_page.dart';
+import 'package:mirarr/moviesPage/UI/cast_crew_row.dart';
+import 'package:mirarr/widgets/bottom_bar.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/widgets/image_gallery_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:Mirarr/functions/show_error_dialog.dart';
+import 'package:mirarr/functions/show_error_dialog.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String movieTitle;

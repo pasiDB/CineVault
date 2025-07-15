@@ -1,8 +1,8 @@
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:Mirarr/moviesPage/models/movie.dart';
+import 'package:mirarr/moviesPage/models/movie.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

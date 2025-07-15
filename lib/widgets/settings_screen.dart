@@ -1,6 +1,6 @@
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/functions/themeprovider_class.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/functions/themeprovider_class.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

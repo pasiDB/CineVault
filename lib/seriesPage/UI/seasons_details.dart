@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:Mirarr/functions/get_base_url.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/moviesPage/UI/cast_crew_row.dart';
-import 'package:Mirarr/seriesPage/UI/tvchart_table.dart';
-import 'package:Mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
-import 'package:Mirarr/seriesPage/function/fetch_episode_cast_crew.dart';
-import 'package:Mirarr/seriesPage/function/torrent_links_series.dart';
-import 'package:Mirarr/seriesPage/function/watch_links_series.dart';
-import 'package:Mirarr/widgets/custom_divider.dart';
+import 'package:mirarr/functions/get_base_url.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/moviesPage/UI/cast_crew_row.dart';
+import 'package:mirarr/seriesPage/UI/tvchart_table.dart';
+import 'package:mirarr/seriesPage/checkers/custom_tmdb_ids_effects_series.dart';
+import 'package:mirarr/seriesPage/function/fetch_episode_cast_crew.dart';
+import 'package:mirarr/seriesPage/function/torrent_links_series.dart';
+import 'package:mirarr/seriesPage/function/watch_links_series.dart';
+import 'package:mirarr/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;

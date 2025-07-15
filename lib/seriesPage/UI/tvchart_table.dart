@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:Mirarr/seriesPage/UI/omdb_table.dart';
+import 'package:mirarr/seriesPage/UI/omdb_table.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Mirarr/moviesPage/checkers/const_tmdb_ids.dart';
+import 'package:mirarr/moviesPage/checkers/const_tmdb_ids.dart';
 
 bool isHarryPotter(int tmdbId) => harryPotterIds.contains(tmdbId);
 bool isMatrix(int tmdbId) => matrixIds.contains(tmdbId);

@@ -1,10 +1,10 @@
-import 'package:Mirarr/functions/themeprovider_class.dart';
-import 'package:Mirarr/functions/regionprovider_class.dart';
-import 'package:Mirarr/functions/url_parser.dart';
+import 'package:mirarr/functions/themeprovider_class.dart';
+import 'package:mirarr/functions/regionprovider_class.dart';
+import 'package:mirarr/functions/url_parser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:Mirarr/moviesPage/main_page.dart';
+import 'package:mirarr/moviesPage/main_page.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:app_links/app_links.dart';

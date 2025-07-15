@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:Mirarr/widgets/bottom_bar.dart';
+import 'package:mirarr/widgets/bottom_bar.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webfeed_plus/domain/rss_category.dart';
 import 'package:webfeed_plus/domain/rss_feed.dart';

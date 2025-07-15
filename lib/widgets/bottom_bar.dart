@@ -1,11 +1,11 @@
-import 'package:Mirarr/widgets/search_screen.dart';
+import 'package:mirarr/widgets/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:Mirarr/moviesPage/main_page.dart';
-import 'package:Mirarr/seriesPage/series_page.dart';
-import 'package:Mirarr/widgets/login.dart';
-import 'package:Mirarr/widgets/profile.dart';
+import 'package:mirarr/moviesPage/main_page.dart';
+import 'package:mirarr/seriesPage/series_page.dart';
+import 'package:mirarr/widgets/login.dart';
+import 'package:mirarr/widgets/profile.dart';
 import 'package:hive/hive.dart';
-import 'package:Mirarr/widgets/rss_screen.dart';
+import 'package:mirarr/widgets/rss_screen.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
