@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
@@ -64,6 +66,8 @@ class ProfilePageState extends State<ProfilePage> {
     final String accountId = openbox.get('accountId');
     final String sessionData = openbox.get('sessionData');
     final region =
+        // ignore: duplicate_ignore
+        // ignore: use_build_context_synchronously
         Provider.of<RegionProvider>(context, listen: false).currentRegion;
     final baseUrl = getBaseUrl(region);
     final response = await http.get(
@@ -220,7 +224,7 @@ class ProfilePageState extends State<ProfilePage> {
 
   Future<void> checkInternetAndFetchData() async {
     var connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
+    if (connectivityResult.contains(ConnectivityResult.none)) {
       // No internet connection
       handleNetworkError(ClientException('No internet connection'));
     } else {

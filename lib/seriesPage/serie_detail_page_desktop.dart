@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'dart:ui';
 
@@ -501,6 +503,7 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                               error,
                                                               context);
                                                         } else {
+                                                          if (!mounted) return;
                                                           Navigator.of(context)
                                                               .pop();
                                                           setState(() {

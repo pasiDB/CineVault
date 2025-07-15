@@ -108,13 +108,14 @@ void showWatchOptions(BuildContext context, int serieId, int seasonNumber,
                               ),
                           ],
                         ),
-                        onTap: () {
+                        onTap: () async {
                           if (optionData != null && optionData['url'] != null) {
-                            _launchUrl(Uri.parse(optionData['url']));
+                            await _launchUrl(Uri.parse(optionData['url']));
                           } else {
                             showErrorDialog('Error',
                                 'URL not available for $option', context);
                           }
+                          // ignore: use_build_context_synchronously
                           Navigator.of(context).pop();
                         },
                       );

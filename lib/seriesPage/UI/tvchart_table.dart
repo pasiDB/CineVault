@@ -143,11 +143,10 @@ class _TvChartTableState extends State<TvChartTable> {
 
     if (_error != null) {
       // Show error message briefly before navigation
-      Future.delayed(const Duration(seconds: 2), () {
-        final localContext = context;
-        if (!localContext.mounted) return;
+      Future.delayed(const Duration(seconds: 2), () async {
+        if (!mounted) return;
         Navigator.pushReplacement(
-          localContext,
+          context,
           MaterialPageRoute(
             builder: (context) => OmdbTable(
               imdbId: widget.imdbId,

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:Mirarr/functions/fetchers/fetch_movie_credits.dart';
@@ -227,6 +229,7 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                   GestureDetector(
                     onTap: () {
                       _castImagesFuture.then((imageUrls) {
+                        if (!mounted) return;
                         _openImageGallery(imageUrls);
                       });
                     },
@@ -631,7 +634,8 @@ class MovieDetailPageState extends State<MovieDetailPage> {
                                               showErrorDialog(
                                                   'Error', error, context);
                                             } else {
-                                              Navigator.of(context).pop();
+                                              if (!mounted) return;
+                                                Navigator.of(context).pop();
                                               setState(() {
                                                 isMovieRated = false;
                                                 userRating = null;

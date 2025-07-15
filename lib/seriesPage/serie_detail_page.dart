@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:Mirarr/functions/fetchers/fetch_serie_details.dart';
