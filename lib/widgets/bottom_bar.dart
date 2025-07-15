@@ -42,7 +42,7 @@ class BottomBarState extends State<BottomBar> {
       _selectedIndex = 3;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => RssScreen()),
+        MaterialPageRoute(builder: (context) => const RssScreen()),
       );
     });
   }
@@ -65,7 +65,7 @@ class BottomBarState extends State<BottomBar> {
       if (sessionData != null) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfilePage()),
+          MaterialPageRoute(builder: (context) => const ProfilePage()),
         );
       } else {
         Navigator.push(
@@ -99,20 +99,20 @@ class BottomBarState extends State<BottomBar> {
           }
         }
       },
-      items: [
-        const BottomNavigationBarItem(
+      items: const [
+        BottomNavigationBarItem(
           icon: Icon(
             Icons.movie,
           ),
           label: 'Movies',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(
             Icons.local_movies,
           ),
           label: 'Series',
         ),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(
             Icons.search,
           ),

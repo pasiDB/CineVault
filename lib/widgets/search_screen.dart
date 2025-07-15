@@ -434,7 +434,7 @@ class SearchScreenState extends State<SearchScreen>
               ),
             ],
           ),
-          DiscoverMoviesPage(),
+          const DiscoverMoviesPage(),
         ],
       ),
       bottomNavigationBar: const BottomBar(),

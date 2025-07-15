@@ -584,8 +584,9 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                                                             ),
                                                             onRatingUpdate:
                                                                 (rating) async {
-                                                              if (!mounted)
+                                                              if (!mounted) {
                                                                 return;
+                                                              }
                                                               final serieId =
                                                                   widget
                                                                       .serieId;
@@ -968,7 +969,7 @@ class SerieDetailPageDesktopState extends State<SerieDetailPageDesktop> {
                 ),
               ),
             ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

@@ -519,8 +519,9 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () async {
-                                                        if (!context.mounted)
+                                                        if (!context.mounted) {
                                                           return;
+                                                        }
                                                         final openbox =
                                                             await Hive.openBox(
                                                                 'sessionBox');
@@ -533,8 +534,9 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                                                             await removeRating(
                                                                 sessionData,
                                                                 widget.movieId);
-                                                        if (!context.mounted)
+                                                        if (!context.mounted) {
                                                           return;
+                                                        }
                                                         if (error != null) {
                                                           showErrorDialog(
                                                               'Error',
@@ -1343,7 +1345,7 @@ class MovieDetailPageDesktopState extends State<MovieDetailPageDesktop> {
                 ),
               ),
             ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }
